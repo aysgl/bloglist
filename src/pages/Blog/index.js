@@ -9,8 +9,8 @@ const Blog = () => {
 
     useEffect(() => {
         axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
-            .then(res => {
-                setPosts(res.data)
+            .then(({data}) => {
+                setPosts(data)
             })
             .catch(err => {
                 console.log(err)
