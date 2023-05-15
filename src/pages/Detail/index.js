@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 
-const Blog = () => {
+const Detail = () => {
     const params = useParams();
 
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
         axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
-            .then(({data}) => {
+            .then(({ data }) => {
                 setPosts(data)
             })
             .catch(err => {
@@ -39,4 +39,4 @@ const Blog = () => {
     )
 }
 
-export default Blog
+export default Detail
