@@ -22,7 +22,7 @@ function App() {
   const fetchData = async () => {
     try {
       const { data } = await Api.get('/posts');
-      // console.log("data", data)
+      setPosts(data)
       return data;
     } catch (err) {
       console.log(err);
