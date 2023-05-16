@@ -8,17 +8,6 @@ import './App.css';
 function App() {
   const [posts, setPosts] = useState([])
 
-  // const fetchPost = () => {
-  //   axios.get(`https://jsonplaceholder.typicode.com/posts`)
-  //     .then(res => {
-  //       setPosts(res.data)
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
-
-
   const fetchData = async () => {
     try {
       const { data } = await Api.get('/posts');
@@ -32,8 +21,6 @@ function App() {
   useEffect(() => {
     fetchData()
   }, [])
-
-  // console.log("data", data)
 
   return (
     <div className='container'>

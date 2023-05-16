@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
-import axios from 'axios';
+import Api from '../../helper/api';
 
 const Detail = () => {
     const params = useParams();
 
     const [posts, setPosts] = useState([])
 
+    const fetchData = async () => {
+        try {
+            const { data } = await Api.get(`/posts/${params.id}`);
+            setPosts(data)
+            return data;
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     useEffect(() => {
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
-            .then(({ data }) => {
-                setPosts(data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }, [params.id])
+        fetchData()
+    }, [])
 
     return (
         <div className='container pt-5'>
